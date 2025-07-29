@@ -1,6 +1,5 @@
 package silver;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class BOJ1182 {
@@ -16,22 +15,19 @@ public class BOJ1182 {
         nums = new int[N];
         for (int i=0; i<N; i++) nums[i] = sc.nextInt();
 
-        for (int i=1; i<=N; i++){
-            sum = 0;
-            combination(0, 0, i);
-        }
+        dfs(0,0);
+        if (S == 0) cnt -= 1;
 
         System.out.println(cnt);
     }
-    static void combination(int idx, int selected, int r){
-        if (selected == r){
-            if (sum == S)  cnt += 1;
+    static void dfs(int depth, int sum){
+        if(depth == N){
+            if (sum == S) cnt+=1;
             return;
         }
-        for (int i= idx; i<N; ++i){
-            sum += nums[i];
-            combination(i+1, selected+1, r);
-            sum -= nums[i];
-        }
+
+        dfs(depth+1, sum + nums[depth]);
+        dfs(depth+1, sum);
     }
+
 }
