@@ -5,10 +5,12 @@ import java.util.Scanner;
 public class BOJ2447 {
     static int N;
     static int[][] star;
+    static StringBuilder sb;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         star = new int[N][N];
+        sb = new StringBuilder();
 
         recur(N,0,0);
         for(int i=0; i<N; i++){
